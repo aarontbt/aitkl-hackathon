@@ -47,6 +47,23 @@ Focus is on **bold, functional concepts** addressing:
 - Teams create/simulate data
 - Use AI APIs & low-code tools encouraged
 
+## Recommended Tech Stack
+- **Framework**: Next.js 15 (App Router) + TypeScript
+- **UI**: Tailwind CSS + shadcn/ui (Radix-based) + Motion
+- **Data/state**
+  - **Server data**: TanStack Query
+  - **Forms**: React Hook Form + Zod (shared schemas)
+- **Backend**: Supabase (Postgres, Auth, Storage, Realtime, Edge Functions)
+  - RLS enabled by default
+  - Single shared client `@/lib/supabase/client`
+  - Edge Functions: kebab-case, inline CORS, invoke via `supabase.functions.invoke(...)`
+- **Types/validation**: Supabase generated types + Zod
+- **AI**: Vercel AI SDK (with OpenAI/Anthropic)
+- **Payments**: Stripe via Supabase Edge webhook; set `verify_jwt = false` in `supabase/config.toml`
+- **Testing/quality**: Vitest, React Testing Library, Playwright; ESLint + Prettier
+- **Dev/infra**: pnpm, GitHub Actions (lint/typecheck/test), Vercel (frontend), Supabase (backend)
+
+
 ## Ideas
 
 Telehealth Chatbot: How about creating a chatbot that answers patient questions, checks symptoms, and helps with booking appointments? It's a great way to mess around with natural language processing! Modern AI tools can help you integrate with existing language models or build your own.
