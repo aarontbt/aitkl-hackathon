@@ -51,18 +51,17 @@ Focus is on **bold, functional concepts** addressing:
 - **Framework**: Next.js 15 (App Router) + TypeScript
 - **UI**: Tailwind CSS + shadcn/ui (Radix-based) + Motion
 - **Data/state**
-  - **Server data**: TanStack Query
+  - **App data**: Convex React `useQuery`, `useMutation`, `useAction` (realtime by default)
   - **Forms**: React Hook Form + Zod (shared schemas)
-- **Backend**: Supabase (Postgres, Auth, Storage, Realtime, Edge Functions)
-  - RLS enabled by default
-  - Single shared client `@/lib/supabase/client`
-  - Edge Functions: kebab-case, inline CORS, invoke via `supabase.functions.invoke(...)`
-- **Types/validation**: Supabase generated types + Zod
+- **Backend**: Convex (database, auth, storage, realtime, serverless functions)
+  - Define schema in `convex/schema.ts`; types generated via Convex codegen
+  - HTTP actions for webhooks (e.g., Stripe) with inline CORS handling
+  - Functions named in kebab-case for consistency
+- **Types/validation**: Convex generated types + Zod
 - **AI**: Vercel AI SDK (with OpenAI/Anthropic)
-- **Payments**: Stripe via Supabase Edge webhook; set `verify_jwt = false` in `supabase/config.toml`
+- **Payments**: Stripe via Convex HTTP action webhook; verify signatures with Stripe webhook secret
 - **Testing/quality**: Vitest, React Testing Library, Playwright; ESLint + Prettier
-- **Dev/infra**: pnpm, GitHub Actions (lint/typecheck/test), Vercel (frontend), Supabase (backend)
-
+- **Dev/infra**: pnpm, GitHub Actions (lint/typecheck/test), Vercel (frontend), Convex Cloud (backend)
 
 ## Ideas
 
